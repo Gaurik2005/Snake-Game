@@ -1,7 +1,8 @@
 from turtle import Turtle
 pos = [(0,0),(-20,0),(-40,0)]
 speed = 20
-WALL=290
+WALL = 290
+
 
 class Snake():
 
@@ -65,5 +66,9 @@ class Snake():
         elif self.head.xcor()< -WALL:
                 self.head.goto(WALL,self.head.ycor())
 
-
-    
+    def reset_snake(self):
+        for snake in self.all_turtles:
+            snake.goto(1000,1000)
+        self.all_turtles.clear()
+        self.create_snake()
+        self.head=self.all_turtles[0]
