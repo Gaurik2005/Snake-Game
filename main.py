@@ -1,5 +1,6 @@
 from turtle import Turtle, Screen
 import time
+import turtle
 from snake import Snake
 from food import Food
 from score import Score_board
@@ -24,8 +25,16 @@ my_screen.onkey(my_snake.right, "Right")
 
 game_on = True
 while game_on:
+    
     my_screen.update()
     time.sleep(0.1)
+
+    my_screen.listen()
+    my_screen.onkey(my_snake.up, "Up")  
+    my_screen.onkey(my_snake.down, "Down")
+    my_screen.onkey(my_snake.left, "Left")  
+    my_screen.onkey(my_snake.right, "Right")
+
     my_snake.move()
 
     if my_snake.head.distance(my_food)<15:
@@ -37,26 +46,14 @@ while game_on:
         if snake == my_snake.head:
             pass
         elif my_snake.head.distance(snake)<10:
-            my_score.game_over()
-            game_on= False
+            name= turtle.textinput("Play Again Input","Do you want to play another game?")
 
+            if name.lower()=="yes" or name.lower()=="y":
+                my_snake.reset_snake()
+                my_score.reset_score()
             
-
-
-    
-    
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
+                continue
+            else:
+                my_score.game_over()
+                game_on= False
 my_screen.exitonclick()
