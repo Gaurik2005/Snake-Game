@@ -14,6 +14,7 @@ A simple yet fun implementation of the classic Snake game using Python's built-i
   - → Right
 - Eat the food to grow longer.
 - Avoid colliding with yourself.
+- High score is saved in `high_score.txt`
 - The game wraps around walls — no boundaries!
 
 ---
